@@ -27,10 +27,10 @@ more comfortable.
 ./bin/console doctrine:migrations:migrate --prefix=Vendor\\PimcoreExampleBundle
 
 # generate a project specific migration
-./bin/console doctrine:migrations:generate --namespace=App\\Migrations
+./bin/console doctrine:migrations:generate --namespace=DoctrineMigrations
 
 # run project specific migrations
-./bin/console doctrine:migrations:migrate --prefix=App\\Migrations
+./bin/console doctrine:migrations:migrate --prefix=DoctrineMigrations
 ```
 
 
@@ -38,7 +38,9 @@ more comfortable.
 ```yml
 doctrine_migrations:
     migrations_paths:
-        'App\Migrations': '%kernel.project_dir%/src/Migrations'
+        # namespace is arbitrary but should be different from App\Migrations
+        # as migrations classes should NOT be autoloaded
+        'DoctrineMigrations': '%kernel.project_dir%/src/Migrations'
 ```
 
 # Run all available migrations after `composer update`
